@@ -1,0 +1,128 @@
+import java.util.Scanner;
+
+public class Pract01{
+
+    public static void main(String args[]){
+    
+	int opc=9;
+	int registros=5;
+	int registro=0;
+	String nombres[]=new String[registros];
+	int calificaciones[]=new int[registros];
+	Scanner sc = new Scanner(System.in);
+            do {
+                System.out.println("Menu de calificaciones");
+			System.out.println("1. Capturar nombre y calificaciones:");
+			System.out.println("2. Imprimir calificaciones y promedio:");
+			System.out.println("3. Imprimir calificaciones y calificacion baja:");
+			System.out.println("4. Imprimir calificaciones y calificacion alta:");
+			System.out.println("5. Fin");
+			System.out.println("\nElige una opcion:");
+			opc=sc.nextInt();
+			
+			
+			
+			if(opc==1){
+				if(registro<registros){
+					System.out.println("Ingrese su nombre");
+					String nombre =sc.next();
+					nombres[registro]=nombre;
+					System.out.println("Ingrese Calificacion");
+					int calificacion= sc.nextInt();
+					calificaciones[registro]=calificacion;
+					
+					registro++;
+				}	
+				else{
+					System.out.println("Ya se lleno la capacidad de registros:");
+				}
+			}
+			if(opc==2){
+				int suma=0;
+				int promedio=0;
+				if(registro >0){
+					System.out.println("Calificaciones:");
+					for(int i=0;i<registro;i++){
+
+						System.out.println(""+nombres[i]+"="+calificaciones[i]);
+					}
+					//separacion
+
+				}
+				else{
+					System.out.println("No hay registros disponibles.");
+				}
+				if(registro>0){
+					for(int i=0;i<registro;i++){
+						suma=suma+calificaciones[i];
+					}
+					promedio=suma/registro;
+					System.out.println("Promedio:"+ promedio +"/n");
+				}
+				else{
+					System.out.println("No se tienen registros.");
+				}
+			}
+			if(opc==3){
+				int baja=100;
+				int dedo=0;
+				System.out.println("opc 3");
+				if(registro>0){
+					System.out.println("Calificaciones:");
+					for(int i=0;i<registro;i++){
+						System.out.println(" "+nombres[i]+"="+calificaciones[i]);
+					}
+					//Separacion
+				}
+				else{
+					System.out.println("No hay registros.");
+				}
+				if(registro>0){
+					for(int i=0;i<registro;i++){
+						if(calificaciones[i]<baja){
+							baja=calificaciones[i];
+							dedo=i;
+						}
+					}
+					System.out.println("La calificacion mas baja es: " +calificaciones[dedo] + "\n");	
+				}
+				else{
+					System.out.println("No hay registros.");
+				}
+				
+			
+			
+			}
+			if(opc==4){
+				int mayor=0;
+				int indice=0;
+				if(registro>0){
+					System.out.println("Calificaciones:");
+					for(int i=0;i<registro;i++){
+						System.out.println(""+nombres[i]+"="+calificaciones[i]);
+					}
+			}
+			else{
+				System.out.println("No hay registros");
+			}
+			if(registro>0){
+				for(int i=0;i<registro;i++){
+					if(calificaciones[i]>mayor){
+						mayor=calificaciones[i];
+						indice=i;
+					}
+				}
+				System.out.println("La calificacion mas alta: "+calificaciones[indice]+"\n");
+			}
+			else{
+				System.out.println("No hay registros.");
+			}
+
+
+		}
+
+	
+		}while (opc!=5);
+	}
+
+}
