@@ -1,0 +1,82 @@
+import java.util.Scanner;
+public class programaEstudiante{ // En el metodo main es donde utilizamos las plantillas o Clases
+    public static void main(String [] args)
+    {
+        int opc=9;
+        int registros=2;
+        int registro=0;
+        estudiante estudiantes[]=new estudiante[registros]; // Esto es un arreglo con los atributos ya especificados en la clase
+                                                        // A diferencia de hacer esto String nombres[]=new String[registros];
+                                                        // String nombres[] seria un arreglo del tipo string
+                                                        // estudiante estudiantes seria un arreglo del tipo estudiante
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Menu de calificaciones");
+        System.out.println("1. Capturar nombre y calificaciones:");
+        System.out.println("2. Imprimir calificaciones y promedio:");
+        System.out.println("3. Fin");
+        System.out.println("\nElige una opcion:");
+        opc=sc.nextInt();
+        
+        if(opc==1){
+                    for(registro=0;registro<2;registro++){
+                
+                        System.out.println("Ingrese su nombre");
+                        String nombre =sc.next();
+                        System.out.println("Materia:");
+                        String materia= sc.next();
+                        System.out.println("No. Identifiacion:");
+                        int matricula=sc.nextInt();
+                        System.out.println("Calificacion:");
+                        float calificacion= sc.nextFloat();
+                        estudiante instancia=new estudiante(nombre, materia, matricula,calificacion);
+                        estudiantes[registro]=instancia;
+                        
+                        
+                        
+                } 
+                
+            }
+            if(opc==2)
+            {
+                for(registro=0;registro<2;registro++)
+                {
+                    System.out.println(estudiantes[registro].nombre);
+                    System.out.println(estudiantes[registro].matricula);
+                    System.out.println(estudiantes[registro].materia);
+                    System.out.println(estudiantes[registro].calif);
+                    System.out.println(estudiantes[registro].estado);
+                }
+                
+                
+            }
+            
+                
+            
+            
+        
+        }while(opc!=3);
+        sc.close();
+    }
+};
+
+class estudiante{
+    String nombre; 
+    String materia;
+    String estado;
+    int matricula; 
+    float calif;
+    public estudiante(String nombre,String materia,int matricula,float calif){
+        this.nombre=nombre; 
+        this.materia=materia;
+        this.matricula=matricula; 
+        this.calif=calif;
+        if(calif<60){
+            this.estado="Reprobado";
+        }
+        else{
+            this.estado="Aprobado";
+        }
+
+    }
+};
